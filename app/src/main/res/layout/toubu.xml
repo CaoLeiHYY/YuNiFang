@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin1"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/zhu_sao_yi_sao"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/saoyixia"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="御泥坊vip商城"
+        android:textSize="20sp"
+        android:textColor="#FC6F8A"/>
+
+    <ImageButton
+        android:id="@+id/zhu_sousuo"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/icon_search"
+        android:layout_gravity="center"
+        android:background="@android:color/white"/>
+
+</LinearLayout>
