@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/failed_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/shopping_trolley_empty"/>
+
+        <Button
+            android:id="@+id/gouwu_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FC6B87"
+            android:text="登陆"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/success_layout"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="购物车"
+                android:textColor="#FC6B87"
+                android:textSize="23sp"/>
+
+            <Button
+                android:id="@+id/douwu_bianji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:textSize="17sp"
+                android:textColor="#FC6B87"
+                android:text="编辑"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/gouwu_listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="7dp"
+                android:layout_height="3dp"/>
+
+            <CheckBox
+                android:id="@+id/gouwu_quanxuan"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:button="@drawable/select_checkbox"/>
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="3dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="全选"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/gouwu_zongjia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="总计：￥0.00"
+                android:textSize="18sp"
+                android:textColor="#FC6B87" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FC6B87"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:text="结算"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

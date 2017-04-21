@@ -14,6 +14,8 @@ import com.nababy.caokexin.R;
 import com.nababy.caokexin.fragment.FenLei;
 import com.nababy.caokexin.fragment.GeRen;
 import com.nababy.caokexin.fragment.GouWu;
+import com.nababy.caokexin.fragment.GouWuChengGong;
+import com.nababy.caokexin.fragment.GouWuShiBai;
 import com.nababy.caokexin.fragment.MeiLa;
 import com.nababy.caokexin.fragment.ShouYe;
 
@@ -32,9 +34,10 @@ public class ZhuActivity extends AppCompatActivity implements View.OnClickListen
     private ShouYe shouYe;
     private FenLei fenLei;
     private MeiLa meiLa;
-    private GouWu gouWu;
+    private Fragment gouWu;
     private GeRen geRen;
     private RadioGroup radioGroup;
+    public static boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,8 @@ public class ZhuActivity extends AppCompatActivity implements View.OnClickListen
         shouYe = new ShouYe();
         fenLei = new FenLei();
         meiLa = new MeiLa();
-        gouWu = new GouWu();
+        gouWu = new GouWuShiBai();
+
         geRen = new GeRen();
         list_fragments.add(shouYe);
         list_fragments.add(fenLei);
@@ -105,6 +109,9 @@ public class ZhuActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.radio_gouwu:
                 showAndHide(gouWu,shouYe,meiLa,fenLei,geRen);
+                Fragment fragment = list_fragments.get(3);
+                GouWuShiBai g = (GouWuShiBai) fragment;
+                g.setSuccess();
                 radioGroup.getChildAt(1).setSelected(true);
                 break;
             case R.id.radio_wode:

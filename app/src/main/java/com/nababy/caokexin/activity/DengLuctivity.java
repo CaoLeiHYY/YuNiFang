@@ -1,7 +1,9 @@
 package com.nababy.caokexin.activity;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +67,26 @@ public class DengLuctivity extends AppCompatActivity implements View.OnClickList
                 });
                 break;
             case R.id.login_login:
+                name = login_edit_name.getText().toString();
+                pwd = login_edit_pwd.getText().toString();
+                url = "http://169.254.94.62:8080/bullking1/login?name="+name+"&pwd="+pwd;
+                client.get(DengLuctivity.this, url, new TextHttpResponseHandler() {
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                        Toast.makeText(DengLuctivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        boolean flag = true;
+                        ZhuActivity.flag = true;
+                        editor.putBoolean("flag",flag);
+                        editor.commit();
+                        Log.e("caokexin------>",responseString);
+                    }
+                });
                 break;
             case R.id.login_back_normal:
                 break;

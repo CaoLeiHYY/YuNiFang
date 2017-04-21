@@ -7,20 +7,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/geren_login"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:src="@mipmap/denglunormal" />
 
-        <ImageView
-            android:id="@+id/user_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/user_setting"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="22dp"
-            android:layout_marginRight="12dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:background="@mipmap/user_center_bg">
+            <ImageView
+                android:id="@+id/settings"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/user_setting"/>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/user_login_no_sets"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/geren_login"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 
