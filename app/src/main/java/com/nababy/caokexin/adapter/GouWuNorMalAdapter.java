@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.bean.MingXingChanPinBean;
-import com.nababy.caokexin.util.select_tools.Select_Tools;
+import com.nababy.caokexin.util.select_tools.SelectTools;
 
 import org.xutils.x;
 
@@ -26,9 +26,9 @@ public class GouWuNorMalAdapter extends BaseAdapter {
 
     List<MingXingChanPinBean.DataBean> lists;
     Context context;
-    Select_Tools st;
+    SelectTools st;
 
-    public GouWuNorMalAdapter(List<MingXingChanPinBean.DataBean> lists, Context context, Select_Tools st) {
+    public GouWuNorMalAdapter(List<MingXingChanPinBean.DataBean> lists, Context context, SelectTools st) {
         this.lists = lists;
         this.context = context;
         this.st = st;

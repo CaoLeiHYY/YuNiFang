@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +17,7 @@ import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.adapter.GouWuNorMalAdapter;
 import com.nababy.caokexin.bean.MingXingChanPinBean;
-import com.nababy.caokexin.util.select_tools.Select_Tools;
+import com.nababy.caokexin.util.select_tools.SelectTools;
 import com.nababy.caokexin.util.select_tools.Select_Tools_Realize;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public class GouWu extends Fragment {
     private float count = 0;
     private TextView gouwu_zongjia;
     private CheckBox gouwu_quanxuan;
-    private Select_Tools st;
+    private SelectTools st;
     private GouWuNorMalAdapter adapter;
     private List<MingXingChanPinBean.DataBean> list;
 

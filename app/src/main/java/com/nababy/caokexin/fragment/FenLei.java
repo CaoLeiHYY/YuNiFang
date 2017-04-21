@@ -17,6 +17,8 @@ import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
+import com.nababy.caokexin.activity.AnFuZhiActivity;
+import com.nababy.caokexin.activity.AnGongXiaoActivity;
 import com.nababy.caokexin.activity.FenLeiMianMoActivity;
 import com.nababy.caokexin.activity.GoodsActivity;
 import com.nababy.caokexin.adapter.MingXingChanPinAdapter;
@@ -36,6 +38,7 @@ public class FenLei extends Fragment implements View.OnClickListener {
     private int[] tu_grids;
     private String url = "http://m.yunifang.com/yunifang/mobile/goods/getall?random=83560&encode=3108ed0b9a42c1e160b2912a78692263&category_id=9%E6%8E%A7%E6%B2%B9%E7%A5%9B%E7%97%98";
     private GridView mingxingchanpin_grid;
+    private Intent intent;
 
     @Nullable
     @Override
@@ -113,30 +116,63 @@ public class FenLei extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fenlei_mianmo:
-                Intent intent = new Intent(getActivity(), FenLeiMianMoActivity.class);
+                intent = new Intent(getActivity(), FenLeiMianMoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.fenlei_bushuibaoshi:
+                intent = new Intent(getActivity(), AnGongXiaoActivity.class);
+                intent.putExtra("page",0);
+                startActivity(intent);
                 break;
             case R.id.fenlei_shuhuanxinfu:
+                intent = new Intent(getActivity(), AnGongXiaoActivity.class);
+                intent.putExtra("page",1);
+                startActivity(intent);
                 break;
             case R.id.fenlei_kongyouqudou:
+                intent = new Intent(getActivity(), AnGongXiaoActivity.class);
+                intent.putExtra("page",2);
+                startActivity(intent);
                 break;
             case R.id.fenlei_meibaitiliang:
+                intent = new Intent(getActivity(), AnGongXiaoActivity.class);
+                intent.putExtra("page",3);
+                startActivity(intent);
                 break;
             case R.id.fenlei_jinzhikangzhou:
+                intent = new Intent(getActivity(), AnGongXiaoActivity.class);
+                intent.putExtra("page",4);
+                startActivity(intent);
                 break;
             case R.id.type_fz_huihe:
+                intent = new Intent(getActivity(), AnFuZhiActivity.class);
+                intent.putExtra("page",0);
+                startActivity(intent);
                 break;
             case R.id.type_fz_zhongxing:
+                intent = new Intent(getActivity(), AnFuZhiActivity.class);
+                intent.putExtra("page",1);
+                startActivity(intent);
                 break;
             case R.id.type_fz_ganxing:
+                intent = new Intent(getActivity(), AnFuZhiActivity.class);
+                intent.putExtra("page",2);
+                startActivity(intent);
                 break;
             case R.id.type_fz_youxing:
+                intent = new Intent(getActivity(), AnFuZhiActivity.class);
+                intent.putExtra("page",3);
+                startActivity(intent);
                 break;
             case R.id.type_fz_doudou:
+                intent = new Intent(getActivity(), AnFuZhiActivity.class);
+                intent.putExtra("page",4);
+                startActivity(intent);
                 break;
             case R.id.type_fz_mingan:
+                intent = new Intent(getActivity(), AnFuZhiActivity.class);
+                intent.putExtra("page",5);
+                startActivity(intent);
                 break;
         }
     }

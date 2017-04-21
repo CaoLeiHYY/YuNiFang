@@ -28,17 +28,19 @@
             android:id="@+id/tieshimianmo"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:textSize="18sp"
             android:text="贴式面膜"
+            android:background="@drawable/text_selector"
             android:gravity="center"/>
 
         <TextView
             android:id="@+id/shuimianmianmo"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:textSize="18sp"
+            android:background="@drawable/text_selector"
             android:text="睡眠面膜"
             android:gravity="center"/>
 
@@ -46,8 +48,9 @@
             android:id="@+id/nijaingmianmo"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:textSize="18sp"
+            android:background="@drawable/text_selector"
             android:text="泥浆面膜"
             android:gravity="center"/>
 
