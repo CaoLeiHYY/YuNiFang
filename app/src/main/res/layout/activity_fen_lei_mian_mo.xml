@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="7dp"
+        android:src="@mipmap/back_normal"/>
+
+    <TextView
+        android:id="@+id/mianmo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="面膜"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/fenlei_lin1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/mianmo">
+
+        <TextView
+            android:id="@+id/tieshimianmo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="贴式面膜"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/shuimianmianmo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="睡眠面膜"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/nijaingmianmo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="泥浆面膜"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fenlei_viewPager"
+        android:layout_below="@+id/fenlei_lin1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

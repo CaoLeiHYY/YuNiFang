@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.activity.BannerActivity;
+import com.nababy.caokexin.activity.GoodsActivity;
+import com.nababy.caokexin.activity.ZhuanTiActivity;
 import com.nababy.caokexin.adapter.MyAdapter;
 import com.nababy.caokexin.adapter.MyAdapter1;
 import com.nababy.caokexin.adapter.MyAdapter2;
@@ -44,7 +47,7 @@ import cz.msebera.android.httpclient.Header;
  * @author 曹可新
  * @time Date
  */
-public class ShouYe extends Fragment {
+public class ShouYe extends Fragment implements View.OnClickListener {
 
     private View view;
     ArrayList<String> list_viewPager_images = new ArrayList<>();
@@ -69,6 +72,8 @@ public class ShouYe extends Fragment {
     private RecyclerView coudanzhuanqu_recylerView;
     private GridView zhuye_gridView;
     private Banner banner;
+    private ImageView zhuye_image_remen;
+    private Intent intent;
 
     @Nullable
     @Override
@@ -104,6 +109,13 @@ public class ShouYe extends Fragment {
         zhuye_coudanzhuanqu = (ImageView) view.findViewById(R.id.zhuye_coudanzhuanqu);
         coudanzhuanqu_recylerView = (RecyclerView) view.findViewById(R.id.coudanzhuanqu_recyclerView);
         zhuye_gridView = (GridView) view.findViewById(R.id.zhuye_gridView);
+        zhuye_xinpinchangxian.setOnClickListener(this);
+        zhuye_tieshimianmo.setOnClickListener(this);
+        zhuye_jubudanpin.setOnClickListener(this);
+        zhuye_shihuitaozhuang.setOnClickListener(this);
+        zhuye_nongjiangshuimian.setOnClickListener(this);
+        zhuye_xingnanhuli.setOnClickListener(this);
+        zhuye_coudanzhuanqu.setOnClickListener(this);
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(getActivity(), url, new TextHttpResponseHandler() {
             @Override
@@ -114,7 +126,7 @@ public class ShouYe extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Toast.makeText(getActivity(), "网络请求成功", Toast.LENGTH_SHORT).show();
-                Gson gson = new Gson();
+                final Gson gson = new Gson();
                 bean = gson.fromJson(responseString, FirstBean.class);
                 for (int i = 0; i < bean.getData().getAd1().size(); i++) {
                     list_viewPager_images.add(bean.getData().getAd1().get(i).getImage());
@@ -163,6 +175,15 @@ public class ShouYe extends Fragment {
                         startActivity(intent);
                     }
                 });
+                zhuye_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String json = gson.toJson(bean.getData().getDefaultGoodsList().get(position));
+                        Intent intent = new Intent(getActivity(),GoodsActivity.class);
+                        intent.putExtra("json",json);
+                        startActivity(intent);
+                    }
+                });
             }
         });
     }
@@ -186,7 +207,7 @@ public class ShouYe extends Fragment {
             }
         });
     }
-    public void shiPeiRecylerView(int position, List<FirstBean.DataBean.SubjectsBean> list1,ImageView image,RecyclerView recyclerView){
+    public void shiPeiRecylerView(final int position, final List<FirstBean.DataBean.SubjectsBean> list1, ImageView image, RecyclerView recyclerView){
         x.image().bind(image,list1.get(position).getImage());
 //设置布局管理器
         FullyLinearLayoutManager xinpinchangxianManager = new FullyLinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
@@ -196,5 +217,50 @@ public class ShouYe extends Fragment {
 //                xinpinchangxian_recyclerView.addItemDecoration(xinpinchangxianDecoration);
         MyAdapter2 myAdapter2 = new MyAdapter2(getActivity(), list1.get(position).getGoodsList());
         recyclerView.setAdapter(myAdapter2);
+        myAdapter2.setOnItemClickListener(new MyAdapter2.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int i) {
+                Gson gson = new Gson();
+                String json = gson.toJson(list1.get(position).getGoodsList().get(i));
+                Intent intent = new Intent(getActivity(), GoodsActivity.class);
+                intent.putExtra("json",json);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.zhuye_xinpinchangxian:
+                intent = new Intent(getActivity(), ZhuanTiActivity.class);
+                intent.putExtra("zhi",0);
+                startActivity(intent);
+                break;
+            case R.id.zhuye_tieshimianmo:
+                intent.putExtra("zhi",1);
+                startActivity(intent);
+                break;
+            case R.id.zhuye_jubudanpin:
+                intent.putExtra("zhi",2);
+                startActivity(intent);
+                break;
+            case R.id.zhuye_shihuitaohuang:
+                intent.putExtra("zhi",3);
+                startActivity(intent);
+                break;
+            case R.id.zhuye_nongjiangshuimian:
+                intent.putExtra("zhi",4);
+                startActivity(intent);
+                break;
+            case R.id.zhuye_xingnanhuli:
+                intent.putExtra("zhi",5);
+                startActivity(intent);
+                break;
+            case R.id.zhuye_coudanzhuanqu:
+                intent.putExtra("zhi",6);
+                startActivity(intent);
+                break;
+        }
     }
 }

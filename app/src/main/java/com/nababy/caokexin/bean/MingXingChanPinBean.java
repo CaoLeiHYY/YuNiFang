@@ -15,5 +15,6 @@ public class MingXingChanPinBean {
         public String goods_img;
         public String goods_name;
         public float shop_price;
+        //public boolean flag;
     }
 }

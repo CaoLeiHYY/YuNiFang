@@ -206,7 +206,7 @@
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="#FF7CF458"
+                        android:background="#DEDEB9"
                         android:text="#混合性肤质#"
                         android:textSize="22sp" />
 
@@ -216,7 +216,7 @@
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="#FFE2C0AA"
+                        android:background="#EED4C2"
                         android:text="#中性肤质#"
                         android:textSize="22sp" />
                 </LinearLayout>
@@ -232,7 +232,7 @@
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="#FF7C89E9"
+                        android:background="#D4D7F7"
                         android:text="#干性肤质#"
                         android:textSize="22sp" />
 
@@ -243,7 +243,7 @@
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="#FF74E26F"
+                        android:background="#D1E1C3"
                         android:text="#油性肤质#"
                         android:textSize="22sp" />
                 </LinearLayout>
@@ -259,7 +259,7 @@
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="#FFF5A398"
+                        android:background="#F1D2CB"
                         android:text="#痘痘肤质#"
                         android:textSize="22sp" />
 
@@ -269,7 +269,7 @@
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="#FF73DDED"
+                        android:background="#BFF1EC"
                         android:text="#敏感肤质#"
                         android:textSize="22sp" />
                 </LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/login_lin1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@android:color/white">
+        <ImageView
+            android:id="@+id/login_back_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:src="@mipmap/back_normal"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="登陆"
+            android:textSize="24sp"
+            android:textColor="#FC6B87"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/login_zhuce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            android:textSize="20sp"
+            android:background="@android:color/white"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/login_edit_name"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_lin1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:hint="请输入用户名"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/login_edit_pwd"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_edit_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:hint="请输入密码"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/login_login"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login_edit_pwd"
+        android:layout_marginTop="50dp"
+        android:background="#FC6B87"
+        android:text="登陆"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

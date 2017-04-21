@@ -23,7 +23,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ZhuActivity" />
-        <activity android:name=".activity.BannerActivity"></activity>
+        <activity android:name=".activity.BannerActivity" />
+        <activity android:name=".activity.ZhuanTiActivity" />
+        <activity android:name=".activity.DengLuctivity" />
+        <activity android:name=".activity.GoodsActivity" />
+        <activity android:name=".activity.FenLeiMianMoActivity"></activity>
     </application>
 
 </manifest>

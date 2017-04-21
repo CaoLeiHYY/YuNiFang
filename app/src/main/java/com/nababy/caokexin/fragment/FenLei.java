@@ -1,5 +1,6 @@
 package com.nababy.caokexin.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,8 @@ import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
+import com.nababy.caokexin.activity.FenLeiMianMoActivity;
+import com.nababy.caokexin.activity.GoodsActivity;
 import com.nababy.caokexin.adapter.MingXingChanPinAdapter;
 import com.nababy.caokexin.bean.MingXingChanPinBean;
 
@@ -31,7 +34,7 @@ public class FenLei extends Fragment implements View.OnClickListener {
 
     private View view;
     private int[] tu_grids;
-    private String url = "http://m.yunifang.com/yunifang/mobile/goods/getall?random=83560&encode=3108ed0b9a42c1e160b2912a78692263&category_id=9%E6%8E%A7%E6%B2%B9%E7%A5%9B%E7%97%98http:/";
+    private String url = "http://m.yunifang.com/yunifang/mobile/goods/getall?random=83560&encode=3108ed0b9a42c1e160b2912a78692263&category_id=9%E6%8E%A7%E6%B2%B9%E7%A5%9B%E7%97%98";
     private GridView mingxingchanpin_grid;
 
     @Nullable
@@ -97,7 +100,11 @@ public class FenLei extends Fragment implements View.OnClickListener {
         mingxingchanpin_grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Gson gson = new Gson();
+                String s = gson.toJson(MingXingChanPinBean.DataBean.class);
+                Intent intent = new Intent(getActivity(), GoodsActivity.class);
+                intent.putExtra("json",s);
+                startActivity(intent);
             }
         });
     }
@@ -106,6 +113,8 @@ public class FenLei extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fenlei_mianmo:
+                Intent intent = new Intent(getActivity(), FenLeiMianMoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.fenlei_bushuibaoshi:
                 break;
