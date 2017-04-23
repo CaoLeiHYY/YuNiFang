@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/que"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@android:color/white"
+        android:text="确认订单"
+        android:textSize="24sp"
+        android:gravity="center"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:src="@mipmap/back_normal"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/tianxiedizhi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请填写收货地址"
+        android:textSize="18sp"
+        android:layout_below="@+id/que"
+        android:layout_marginTop="13dp"
+        android:background="@android:color/white"/>
+
+    <LinearLayout
+        android:id="@+id/queren_lin1"
+        android:layout_below="@+id/tianxiedizhi"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="13dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"/>
+
+            <CheckBox
+                android:id="@+id/queren_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:background="@android:color/white"
+                android:button="@drawable/select_checkbox"
+                android:focusable="false"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/queren_image"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@mipmap/ic_launcher"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/queren_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="清爽平衡矿物质"
+                    android:textSize="17sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/queren_item_jiage"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="￥ 160.00"
+                        android:textColor="#FC6B87"
+                        android:layout_marginBottom="3dp"/>
+                    <TextView
+                        android:id="@+id/queren_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@android:color/darker_gray"
+                        android:text="数量：4"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="13dp"
+                android:layout_height="10dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="购买数量："/>
+
+            <ImageView
+                android:id="@+id/quern_jiashangpin"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/add_able"/>
+
+            <TextView
+                android:id="@+id/queren_shangpincount"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="1"
+                android:gravity="center"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:id="@+id/queren_shangpinjian"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/jian"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/queren_zongji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="共计一件商品，总计：69元"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/queren_peisong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/queren_lin1"
+        android:layout_marginTop="13dp"
+        android:text="配送方式："
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_below="@+id/queren_lin1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="17dp"
+        android:text="包邮  >"/>
+</RelativeLayout>

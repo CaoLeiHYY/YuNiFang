@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +19,15 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.activity.DengLuctivity;
+import com.nababy.caokexin.activity.JieSuanActiity;
 import com.nababy.caokexin.activity.ZhuActivity;
 import com.nababy.caokexin.adapter.GouWuNorMalAdapter;
+import com.nababy.caokexin.bean.GouwucheBean;
 import com.nababy.caokexin.bean.MingXingChanPinBean;
 import com.nababy.caokexin.util.select_tools.SelectTools;
 import com.nababy.caokexin.util.select_tools.Select_Tools_Realize;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -44,9 +48,11 @@ public class GouWuShiBai extends Fragment {
     private TextView gouwu_zongjia;
     private CheckBox gouwu_quanxuan;
     private SelectTools st;
-    private GouWuNorMalAdapter adapter;
-    private List<MingXingChanPinBean.DataBean> list;
     private View view;
+    private ArrayList<GouwucheBean.CartItemList> cartItemList1;
+    private int id = 67;
+    private GouWuNorMalAdapter adapter;
+    private Button jiesuan;
 
     @Nullable
     @Override
@@ -54,6 +60,10 @@ public class GouWuShiBai extends Fragment {
         view = inflater.inflate(R.layout.gouwu_shibai,null);
         success = view.findViewById(R.id.success_layout);
         failed = view.findViewById(R.id.failed_layout);
+        listView = (ListView) view.findViewById(R.id.gouwu_listView);
+        gouwu_zongjia = (TextView) view.findViewById(R.id.gouwu_zongjia);
+        gouwu_quanxuan = (CheckBox) view.findViewById(R.id.gouwu_quanxuan);
+        jiesuan = (Button) view.findViewById(R.id.jiesuan);
         return view;
     }
 
@@ -61,7 +71,7 @@ public class GouWuShiBai extends Fragment {
         if(ZhuActivity.flag){
             success.setVisibility(View.VISIBLE);
             failed.setVisibility(View.GONE);
-            initView();
+            questDatas(id);
         }else{
             success.setVisibility(View.GONE);
             failed.setVisibility(View.VISIBLE);
@@ -80,30 +90,29 @@ public class GouWuShiBai extends Fragment {
         });
     }
 
-    private void initView() {
+    //写个请求的方法
+    public void  questDatas(int id){
         st = new Select_Tools_Realize();
-        listView = (ListView) view.findViewById(R.id.gouwu_listView);
-        gouwu_zongjia = (TextView) view.findViewById(R.id.gouwu_zongjia);
-        gouwu_quanxuan = (CheckBox) view.findViewById(R.id.gouwu_quanxuan);
-        AsyncHttpClient client = new AsyncHttpClient();
+
+        String url="http://169.254.94.62:8080/bullking1/cart?userID="+id;
+        AsyncHttpClient client=new AsyncHttpClient();
         client.get(getActivity(), url, new TextHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
 
             }
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Gson gson = new Gson();
-                MingXingChanPinBean bean = gson.fromJson(responseString, MingXingChanPinBean.class);
-                list = bean.data;
-                st.putItems(list, false);
-                adapter = new GouWuNorMalAdapter(list, getActivity(), st);
+                Gson gson=new Gson();
+                Log.i("xxx",responseString);
+                GouwucheBean bean = gson.fromJson(responseString, GouwucheBean.class);
+                cartItemList1 = bean.getCartItemList();
+                adapter = new GouWuNorMalAdapter(cartItemList1,getActivity(),st);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        gouwu_quanxuan.setChecked(st.clickItem(list.get(position)));
+                        gouwu_quanxuan.setChecked(st.clickItem(cartItemList1.get(position)));
                         gouwu_zongjia.setText("总价：￥"+st.getTotalPrice());
                         adapter.notifyDataSetChanged();
                     }
@@ -122,8 +131,63 @@ public class GouWuShiBai extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
                 });
+                jiesuan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(),JieSuanActiity.class);
+                        startActivity(intent);
+                    }
+                });
             }
         });
+
     }
+
+
+//    private void initView() {
+//        st = new Select_Tools_Realize();
+//        listView = (ListView) view.findViewById(R.id.gouwu_listView);
+//        gouwu_zongjia = (TextView) view.findViewById(R.id.gouwu_zongjia);
+//        gouwu_quanxuan = (CheckBox) view.findViewById(R.id.gouwu_quanxuan);
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        client.get(getActivity(), url, new TextHttpResponseHandler() {
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+//                Gson gson = new Gson();
+//                MingXingChanPinBean bean = gson.fromJson(responseString, MingXingChanPinBean.class);
+//                list = bean.data;
+//                st.putItems(list, false);
+////                adapter = new GouWuNorMalAdapter(list, getActivity(), st);
+//                listView.setAdapter(adapter);
+//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        gouwu_quanxuan.setChecked(st.clickItem(cartItemList1.get(position)));
+//                        gouwu_zongjia.setText("总价：￥"+st.getTotalPrice());
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                });
+//
+//                gouwu_quanxuan.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        CheckBox cb = (CheckBox) v;
+//                        if (cb.isChecked()){
+//                            st.selectAll();
+//                        }else {
+//                            st.unselect();
+//                        }
+//                        gouwu_zongjia.setText("总价：￥"+st.getTotalPrice());
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                });
+//            }
+//        });
+//    }
 
 }

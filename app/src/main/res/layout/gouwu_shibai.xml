@@ -32,14 +32,13 @@
         android:id="@+id/success_layout"
         android:visibility="gone">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@android:color/white">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -52,11 +51,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="7dp"
                 android:textSize="17sp"
                 android:textColor="#FC6B87"
                 android:text="编辑"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <ListView
             android:id="@+id/gouwu_listView"
@@ -101,6 +102,7 @@
                 android:textColor="#FC6B87" />
 
             <Button
+                android:id="@+id/jiesuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#FC6B87"

@@ -1,5 +1,6 @@
 package com.nababy.caokexin.util.select_tools;
 
+import com.nababy.caokexin.bean.GouwucheBean;
 import com.nababy.caokexin.bean.MingXingChanPinBean;
 
 import java.util.HashMap;
@@ -187,8 +188,8 @@ public class Select_Tools_Realize implements SelectTools {
         for (Map.Entry<Object, Boolean> m : set) {
             boolean k = m.getValue();
             if(k){
-                MingXingChanPinBean.DataBean db = (MingXingChanPinBean.DataBean) m.getKey();
-                total += db.shop_price;
+                GouwucheBean.CartItemList db = (GouwucheBean.CartItemList) m.getKey();
+                total += Float.parseFloat(db.getPrice());
             }
         }
         total = (int)(total*100)/100f;

@@ -28,6 +28,7 @@ public class GoodsActivity extends AppCompatActivity {
     private String name;
     private String pic;
     private float price;
+    private FirstBean.DataBean.SubjectsBean.GoodsListBean bean1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,41 +41,58 @@ public class GoodsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String json = intent.getStringExtra("json");
         Gson gson = new Gson();
-        final FirstBean.DataBean.SubjectsBean.GoodsListBean bean1 = gson.fromJson(json, FirstBean.DataBean.SubjectsBean.GoodsListBean.class);
-        x.image().bind(shop_pic,bean1.getGoods_img());
+        bean1 = gson.fromJson(json, FirstBean.DataBean.SubjectsBean.GoodsListBean.class);
+        x.image().bind(shop_pic, bean1.getGoods_img());
         shop_name.setText(bean1.getGoods_name());
-        shop_money.setText("￥"+bean1.getShop_price());
+        shop_money.setText("￥"+ bean1.getShop_price());
         shang_jia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name = bean1.getGoods_name();
-                pic = bean1.getGoods_img();
-                price = (float) bean1.getShop_price();
-                OkHttpClient mOkHttpClient = new OkHttpClient();
-                FormEncodingBuilder builder = new FormEncodingBuilder();
-                builder.add("productID","1");
-                builder.add("count","1");
-                builder.add("colorID","1");
-                builder.add("sizeID","1");
-                builder.add("userID",userID+"");
-                builder.add("name",name);
-                builder.add("pic",pic);
-                builder.add("price",price+"");
-                Request request = new Request.Builder()
-                        .url("http://169.254.94.62:8080/bullking1/cart?")
-                        .post(builder.build())
-                        .build();
-                mOkHttpClient.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Request request, IOException e) {
-                        Log.e("失败","失败");
-                    }
+                getSuccess();
+            }
+        });
+    }
 
-                    @Override
-                    public void onResponse(final Response response) throws IOException {
-                        Log.e("caokexin---->","成功");
-                    }
-                });
+    public void getSuccess(){
+        if(ZhuActivity.flag){
+            tianjiachenggong();
+        }else{
+            tianjiashibai();
+        }
+    }
+
+    public void tianjiashibai(){
+        Intent intent = new Intent(GoodsActivity.this,DengLuctivity.class);
+        startActivity(intent);
+    }
+
+    public void tianjiachenggong(){
+        name = bean1.getGoods_name();
+        pic = bean1.getGoods_img();
+        price = (float) bean1.getShop_price();
+        OkHttpClient mOkHttpClient = new OkHttpClient();
+        FormEncodingBuilder builder = new FormEncodingBuilder();
+        builder.add("productID","1");
+        builder.add("count","1");
+        builder.add("colorID","1");
+        builder.add("sizeID","1");
+        builder.add("userID",userID+"");
+        builder.add("name",name);
+        builder.add("pic",pic);
+        builder.add("price",price+"");
+        Request request = new Request.Builder()
+                .url("http://169.254.94.62:8080/bullking1/cart?")
+                .post(builder.build())
+                .build();
+        mOkHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                Log.e("失败","失败");
+            }
+
+            @Override
+            public void onResponse(final Response response) throws IOException {
+                Log.e("caokexin---->","成功");
             }
         });
     }

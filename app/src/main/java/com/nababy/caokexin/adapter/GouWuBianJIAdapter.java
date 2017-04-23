@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.bean.GouwucheBean;
-import com.nababy.caokexin.bean.MingXingChanPinBean;
 import com.nababy.caokexin.util.select_tools.SelectTools;
 
 import org.xutils.x;
@@ -23,13 +22,13 @@ import java.util.List;
  * @author 曹可新
  * @time Date
  */
-public class GouWuNorMalAdapter extends BaseAdapter {
+public class GouWuBianJIAdapter extends BaseAdapter {
 
     List<GouwucheBean.CartItemList> lists;
     Context context;
     SelectTools st;
 
-    public GouWuNorMalAdapter(List<GouwucheBean.CartItemList> lists, Context context, SelectTools st) {
+    public GouWuBianJIAdapter(List<GouwucheBean.CartItemList> lists, Context context, SelectTools st) {
         this.lists = lists;
         this.context = context;
         this.st = st;
@@ -77,5 +76,4 @@ public class GouWuNorMalAdapter extends BaseAdapter {
         TextView name;
         TextView danjia;
     }
-
 }

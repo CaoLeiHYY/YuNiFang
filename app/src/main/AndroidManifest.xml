@@ -29,7 +29,8 @@
         <activity android:name=".activity.GoodsActivity" />
         <activity android:name=".activity.FenLeiMianMoActivity" />
         <activity android:name=".activity.AnGongXiaoActivity" />
-        <activity android:name=".activity.AnFuZhiActivity"></activity>
+        <activity android:name=".activity.AnFuZhiActivity" />
+        <activity android:name=".activity.JieSuanActiity"></activity>
     </application>
 
 </manifest>
