@@ -29,6 +29,7 @@ public class GoodsActivity extends AppCompatActivity {
     private String pic;
     private float price;
     private FirstBean.DataBean.SubjectsBean.GoodsListBean bean1;
+    private TextView shang_mai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,8 @@ public class GoodsActivity extends AppCompatActivity {
         TextView shop_name = (TextView) findViewById(R.id.shop_name);
         TextView shop_money = (TextView) findViewById(R.id.shop_money);
         TextView shang_jia = (TextView) findViewById(R.id.shang_jia);
-        Intent intent = getIntent();
+        shang_mai = (TextView) findViewById(R.id.shang_mai);
+        final Intent intent = getIntent();
         String json = intent.getStringExtra("json");
         Gson gson = new Gson();
         bean1 = gson.fromJson(json, FirstBean.DataBean.SubjectsBean.GoodsListBean.class);
@@ -49,6 +51,23 @@ public class GoodsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getSuccess();
+            }
+        });
+        shang_mai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ZhuActivity.flag){
+                    Intent intent = new Intent(GoodsActivity.this,JieSuanActiity.class);
+                    intent.putExtra("name",bean1.getGoods_name());
+                    intent.putExtra("image",bean1.getGoods_img());
+                    intent.putExtra("price",bean1.getShop_price());
+                    startActivity(intent);
+                    Log.e("确认-------》","确认");
+                }else {
+                    Log.e("登陆-------》","登陆");
+                    Intent intent = new Intent(GoodsActivity.this,DengLuctivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

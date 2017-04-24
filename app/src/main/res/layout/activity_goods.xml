@@ -229,6 +229,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:text="立即购买"/>
         <TextView
             android:id="@+id/shang_jia"
