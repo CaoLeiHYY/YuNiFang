@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -39,7 +39,7 @@
                 android:id="@+id/queren_lin1"
                 android:layout_below="@+id/tianxiedizhi"
                 android:layout_width="match_parent"
-                android:layout_height="240dp"
+                android:layout_height="180dp"
                 android:layout_marginTop="13dp"
                 android:orientation="vertical">
 
@@ -55,7 +55,7 @@
                     <CheckBox
                         android:id="@+id/queren_checkBox"
                         android:layout_width="wrap_content"
-                        android:layout_height="160dp"
+                        android:layout_height="120dp"
                         android:background="@android:color/white"
                         android:button="@drawable/select_checkbox"
                         android:focusable="false"
@@ -64,13 +64,13 @@
                     <ImageView
                         android:id="@+id/queren_image"
                         android:layout_width="160dp"
-                        android:layout_height="160dp"
+                        android:layout_height="120dp"
                         android:src="@mipmap/ic_launcher"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
+                        android:layout_height="120dp"
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/queren_name"
@@ -85,18 +85,11 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:id="@+id/queren_item_jiage"
-                                android:layout_width="80dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="￥ 160.00"
                                 android:textColor="#FC6B87"
                                 android:layout_marginBottom="3dp"/>
-                            <TextView
-                                android:id="@+id/queren_count"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="4dp"
-                                android:textColor="@android:color/darker_gray"
-                                android:text="数量：4"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -213,7 +206,7 @@
             <EditText
                 android:id="@+id/queren_liuyan"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="100dp"
                 android:hint="给买家留言"
                 android:gravity="center"
                 android:layout_below="@+id/queren_manzeng"
@@ -289,6 +282,7 @@
         android:background="@android:color/white">
 
         <TextView
+            android:id="@+id/queren_shifu"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
