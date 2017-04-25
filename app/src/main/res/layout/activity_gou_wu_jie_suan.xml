@@ -46,110 +46,25 @@
                     android:background="@android:color/white"/>
 
                 <LinearLayout
-                    android:id="@+id/queren_lin1"
+                    android:id="@+id/gouwujiesuan_lin1"
                     android:layout_below="@+id/tianxiedizhi"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <ListView
+                        android:id="@+id/gouteujiesuan_list"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <View
-                            android:layout_width="12dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/white"/>
+                        android:layout_height="wrap_content"/>
 
-                        <ImageView
-                            android:id="@+id/queren_image"
-                            android:layout_width="160dp"
-                            android:layout_height="120dp"
-                            android:src="@mipmap/ic_launcher"/>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="120dp"
-                            android:orientation="vertical">
-                            <TextView
-                                android:id="@+id/queren_name"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:text="清爽平衡矿物质"
-                                android:textSize="17sp"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-                                <TextView
-                                    android:id="@+id/queren_item_jiage"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="￥ 160.00"
-                                    android:textColor="#FC6B87"
-                                    android:layout_marginBottom="3dp"/>
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <View
-                            android:layout_width="13dp"
-                            android:layout_height="10dp"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textSize="18sp"
-                            android:text="购买数量："/>
-
-                        <ImageView
-                            android:id="@+id/quern_jiashangpin"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@mipmap/add_able"/>
-
-                        <TextView
-                            android:id="@+id/queren_shangpincount"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:text="1"
-                            android:gravity="center"
-                            android:textSize="18sp"/>
-
-                        <ImageView
-                            android:id="@+id/queren_shangpinjian"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@mipmap/jian"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="3dp"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:id="@+id/queren_zongji"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="17sp"
-                            android:text="共计一件商品，总计：69元"/>
-                    </LinearLayout>
 
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/queren_peisong"
+                    android:id="@+id/gouwujiesuan_peisong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/queren_lin1"
+                    android:layout_below="@+id/gouwujiesuan_lin1"
                     android:layout_marginTop="13dp"
                     android:text="配送方式："
                     android:textSize="18sp"
@@ -165,16 +80,16 @@
                     android:text="包邮  >"/>
 
                 <TextView
-                    android:id="@+id/queren_daijinquan"
+                    android:id="@+id/gouwujiesuan_daijinquan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/queren_peisong"
+                    android:layout_below="@+id/gouwujiesuan_peisong"
                     android:layout_marginTop="13dp"
                     android:text="使用代金券"
                     android:textSize="18sp"
                     android:layout_marginLeft="20dp"/>
                 <TextView
-                    android:layout_below="@+id/queren_peisong"
+                    android:layout_below="@+id/gouwujiesuan_peisong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
@@ -185,16 +100,16 @@
                     android:textColor="#FC6B87"/>
 
                 <TextView
-                    android:id="@+id/queren_manzeng"
+                    android:id="@+id/gouwujiesuan_manzeng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/queren_daijinquan"
+                    android:layout_below="@+id/gouwujiesuan_daijinquan"
                     android:layout_marginTop="13dp"
                     android:text="商城满赠"
                     android:textSize="18sp"
                     android:layout_marginLeft="20dp"/>
                 <TextView
-                    android:layout_below="@+id/queren_daijinquan"
+                    android:layout_below="@+id/gouwujiesuan_daijinquan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
@@ -205,17 +120,17 @@
                     android:textColor="#FC6B87"/>
 
                 <EditText
-                    android:id="@+id/queren_liuyan"
+                    android:id="@+id/gouwujiesuan_liuyan"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:hint="给买家留言"
                     android:gravity="center"
-                    android:layout_below="@+id/queren_manzeng"
+                    android:layout_below="@+id/gouwujiesuan_manzeng"
                     android:layout_marginTop="10dp"/>
 
                 <TextView
-                    android:id="@+id/zhifufangshi"
-                    android:layout_below="@+id/queren_liuyan"
+                    android:id="@+id/gouwujiesuan_zhifufangshi"
+                    android:layout_below="@+id/gouwujiesuan_liuyan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
@@ -223,8 +138,8 @@
                     android:textSize="18sp"
                     android:text="支付方式"/>
                 <LinearLayout
-                    android:id="@+id/zhifubao"
-                    android:layout_below="@+id/zhifufangshi"
+                    android:id="@+id/gouwujiesuan_zhifubao"
+                    android:layout_below="@+id/gouwujiesuan_zhifufangshi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -243,13 +158,13 @@
                         android:text="支付宝支付"
                         android:textSize="18sp"/>
                     <CheckBox
-                        android:id="@+id/check_zhifubao"
+                        android:id="@+id/gouwujiesuan_check_zhifubao"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:button="@drawable/select_checkbox"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_below="@+id/zhifubao"
+                    android:layout_below="@+id/gouwujiesuan_zhifubao"
                     android:layout_width="match_parent"
                     android:layout_marginTop="13dp"
                     android:layout_height="wrap_content"
@@ -285,7 +200,7 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/queren_shifu"
+            android:id="@+id/gouwujiesuan_shifu"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -295,7 +210,7 @@
             android:text="实付：￥30.0元"/>
 
         <Button
-            android:id="@+id/queren_jiesuan"
+            android:id="@+id/gouwujiesuan_jiesuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FC6B87"

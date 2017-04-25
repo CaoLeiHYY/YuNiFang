@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,9 @@ public class JieSuanActiity extends AppCompatActivity implements View.OnClickLis
     private TextView queren_zongji;
     private Double price;
     private TextView queren_shifu;
+    private Button queren_jiesuan;
+    private String name;
+    private String describe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +37,20 @@ public class JieSuanActiity extends AppCompatActivity implements View.OnClickLis
         queren_shangpinjian = (ImageView) findViewById(R.id.queren_shangpinjian);
         queren_shangpinjian.setOnClickListener(this);
         queren_shangpincount = (TextView) findViewById(R.id.queren_shangpincount);
+        queren_jiesuan = (Button) findViewById(R.id.queren_jiesuan);
+        queren_jiesuan.setOnClickListener(this);
         queren_zongji = (TextView) findViewById(R.id.queren_zongji);
         queren_shifu = (TextView) findViewById(R.id.queren_shifu);
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        name = intent.getStringExtra("name");
+        describe = intent.getStringExtra("describe");
         String image = intent.getStringExtra("image");
         price = intent.getDoubleExtra("price",0);
         x.image().bind(queren_image,image);
         queren_name.setText(name);
-        queren_item_jiage.setText("总价：￥"+ price +"元");
+        queren_item_jiage.setText("单价：￥"+ price +"元");
         queren_shifu.setText("实付：￥"+price*count+"元");
+        queren_zongji.setText("共计"+count+"件商品，共"+price*count+"元");
     }
 
     @Override
@@ -55,10 +63,18 @@ public class JieSuanActiity extends AppCompatActivity implements View.OnClickLis
                 queren_shifu.setText("实付：￥"+price*count+"元");
                 break;
             case R.id.queren_shangpinjian:
-                count -= 1;
-                queren_shangpincount.setText(""+count);
-                queren_zongji.setText("共计"+count+"件商品，共"+price+"元");
-                queren_shifu.setText("实付：￥"+price*count+"元");
+                if (count > 0){
+                    count -= 1;
+                    queren_shangpincount.setText(""+count);
+                    queren_zongji.setText("共计"+count+"件商品，共"+price*count+"元");
+                    queren_shifu.setText("实付：￥"+price*count+"元");
+                }
+                break;
+            case R.id.queren_jiesuan:
+                Intent intent = new Intent(JieSuanActiity.this,PayDemoActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("describe",describe);
+                startActivity(intent);
                 break;
         }
     }

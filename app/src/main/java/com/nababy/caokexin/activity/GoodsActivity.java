@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.bean.FirstBean;
 import com.squareup.okhttp.Callback;
@@ -17,7 +19,9 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.squareup.okhttp.internal.spdy.Header;
 
+import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.io.IOException;
@@ -58,10 +62,12 @@ public class GoodsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (ZhuActivity.flag){
                     Intent intent = new Intent(GoodsActivity.this,JieSuanActiity.class);
-                    intent.putExtra("name",bean1.getGoods_name());
+                    intent.putExtra("name",bean1.getEfficacy());
                     intent.putExtra("image",bean1.getGoods_img());
                     intent.putExtra("price",bean1.getShop_price());
+                    intent.putExtra("describe",bean1.getGoods_name());
                     startActivity(intent);
+
                     Log.e("确认-------》","确认");
                 }else {
                     Log.e("登陆-------》","登陆");
