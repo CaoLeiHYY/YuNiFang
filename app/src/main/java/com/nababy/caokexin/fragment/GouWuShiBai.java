@@ -20,17 +20,14 @@ import com.loopj.android.http.TextHttpResponseHandler;
 import com.nababy.caokexin.R;
 import com.nababy.caokexin.activity.DengLuctivity;
 import com.nababy.caokexin.activity.GouWuJieSuanActivity;
-import com.nababy.caokexin.activity.JieSuanActiity;
 import com.nababy.caokexin.activity.ZhuActivity;
 import com.nababy.caokexin.adapter.GouWuNorMalAdapter;
 import com.nababy.caokexin.bean.GouwucheBean;
-import com.nababy.caokexin.bean.MingXingChanPinBean;
 import com.nababy.caokexin.bean.YuDingBean;
 import com.nababy.caokexin.util.select_tools.SelectTools;
 import com.nababy.caokexin.util.select_tools.Select_Tools_Realize;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -55,7 +52,7 @@ public class GouWuShiBai extends Fragment {
     private int id = 67;
     private GouWuNorMalAdapter adapter;
     private Button jiesuan;
-    ArrayList<YuDingBean.DataBean> listDatas = new ArrayList<>();
+    ArrayList<YuDingBean.DataBean> listDatas;
 
     @Nullable
     @Override
@@ -110,8 +107,11 @@ public class GouWuShiBai extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Gson gson=new Gson();
                 Log.i("xxx",responseString);
-                final GouwucheBean bean = gson.fromJson(responseString, GouwucheBean.class);
+                GouwucheBean bean = gson.fromJson(responseString, GouwucheBean.class);
                 cartItemList1 = bean.getCartItemList();
+                for (int i = 0; i < cartItemList1.size(); i++) {
+                    bean.getCartItemList().get(i).setFlag(false);
+                }
                 adapter = new GouWuNorMalAdapter(cartItemList1,getActivity(),st);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -139,14 +139,19 @@ public class GouWuShiBai extends Fragment {
                 jiesuan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.e("caokexin---?>",cartItemList1.toString());
+                        listDatas = new ArrayList<>();
+                        cartItemList1.get(1).setFlag(true);
+                        cartItemList1.get(3).setFlag(true);
                         for (int i = 0; i < cartItemList1.size(); i++) {
-                            if (cartItemList1.get(i).getFlag() == true){
+                            if (cartItemList1.get(i).getFlag()==true){
                                 YuDingBean.DataBean dataBean = new YuDingBean.DataBean();
                                 dataBean.setGoods_name(cartItemList1.get(i).getName());
                                 dataBean.setChild_price(cartItemList1.get(i).getPrice());
                                 dataBean.setContact(cartItemList1.get(i).getPic());
                                 dataBean.setAdult_num(1);
                                 listDatas.add(dataBean);
+                                Log.e("xxxx",listDatas+"");
                             }
                         }
                         Intent intent = new Intent(getActivity(),GouWuJieSuanActivity.class);
